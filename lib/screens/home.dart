@@ -8,17 +8,20 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner:
+          appEnvironment == EnvironmentType.dev ? true : false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Flutter Demo Home Page'),
+          title: Text(EnvironmentType.dev.toString()),
         ),
         body: Center(
-          child: Text('Hello World'),
+          child: Text(
+            'Hello World!',
+          ),
         ),
       ),
     );

@@ -9,7 +9,7 @@ on:
 
 jobs:
   build-dev-debug:
-    name: Build Debug APK from Dev Branch
+    name: "Build Debug APK from Dev Branch"
     if: github.event.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
 

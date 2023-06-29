@@ -23,7 +23,7 @@ jobs:
 
       - name: Fetch Environment Secrets
         run: |
-          echo "API_KEY=${{ secrets.API_KEY }}" >> env_dev
+          echo "API_KEY=${{ secrets.API_KEY }}" >> .env_dev
 
       - name: Build Debug APK
         run: |
@@ -52,7 +52,7 @@ jobs:
 
       - name: Fetch Environment Secrets
         run: |
-          echo "API_KEY=${{ secrets.API_KEY }}" >> env_stg
+          echo "API_KEY=${{ secrets.API_KEY }}" >> .env_stg
 
       - name: Build Debug APK
         run: |
@@ -81,7 +81,7 @@ jobs:
 
       - name: Fetch Environment Secrets
         run: |
-          echo "API_KEY=${{ secrets.API_KEY }}" >> env_prod
+          echo "API_KEY=${{ secrets.API_KEY }}" >> .env_prod
 
       - name: Build Release APK
         run: |

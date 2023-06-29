@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Dev",
+        "request": "launch",
+        "type": "dart",
+        "program": "lib/dev/main.dart"
+      },
+      {
+        "name": "Stage",
+        "request": "launch",
+        "type": "dart",
+        "program": "lib/stage/main.dart"
+      },
+      {
+        "name": "Production",
+        "request": "launch",
+        "type": "dart",
+        "program": "lib/prod/main.dart"
+    }
+  ]
+}

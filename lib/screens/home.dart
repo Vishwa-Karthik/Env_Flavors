@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gpt_env_setup/dev/env_dev.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:gpt_env_setup/dev/env_setup.dart';
 
 class Home extends StatelessWidget {
   final EnvironmentType appEnvironment;
@@ -20,7 +21,7 @@ class Home extends StatelessWidget {
         ),
         body: Center(
           child: Text(
-            'Hello World!',
+            dotenv.env['API_URL'].toString(),
           ),
         ),
       ),

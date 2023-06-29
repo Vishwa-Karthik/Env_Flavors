@@ -61,6 +61,28 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    // product flavors
+      // Specifies one flavor dimension.
+    flavorDimensions "default"
+    productFlavors {
+        dev {
+            dimension "default"
+            applicationIdSuffix ".dev"
+            resValue "string", "app_name", "flavors-dev"
+        }
+        stg {
+            dimension "default"
+            applicationIdSuffix ".stg"
+            resValue "string", "app_name", "flavors-stg"
+
+        }
+        prod {
+            dimension "default"
+            resValue "string", "app_name", "flavors"
+
+        }
+    }
 }
 
 flutter {

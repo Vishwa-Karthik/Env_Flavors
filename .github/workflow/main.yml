@@ -1,0 +1,96 @@
+name: Build and Generate Artifacts
+
+on:
+  push:
+    branches:
+      - dev
+      - stage
+      - master
+
+jobs:
+  build-dev-debug:
+    name: Build Debug APK from Dev Branch
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Flutter SDK
+        uses: subosito/flutter-action@v2.2.0
+        with:
+          flutter-version: '3.10.5'
+
+      - name: Fetch Environment Secrets
+        run: |
+          echo "API_KEY=${{ secrets.API_KEY }}" >> env_dev
+
+      - name: Build Debug APK
+        run: |
+          flutter clean
+          flutter pub get
+          flutter build apk --flavor dev --debug
+
+      - name: Archive Debug Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: dev-debug-apk
+          path: build/app/outputs/flutter-apk/app-debug.apk
+
+  build-stage-debug:
+    name: Build Debug APK from Stage Branch
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Flutter SDK
+        uses: subosito/flutter-action@v2.2.0
+        with:
+          flutter-version: '3.10.5'
+
+      - name: Fetch Environment Secrets
+        run: |
+          echo "API_KEY=${{ secrets.API_KEY }}" >> env_stg
+
+      - name: Build Debug APK
+        run: |
+          flutter clean
+          flutter pub get
+          flutter build apk --flavor stage --debug
+
+      - name: Archive Debug Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: stage-debug-apk
+          path: build/app/outputs/flutter-apk/app-debug.apk
+
+  build-master-release:
+    name: Build Release APK from Master Branch
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Flutter SDK
+        uses: subosito/flutter-action@v2.2.0
+        with:
+          flutter-version: '3.10.5'
+
+      - name: Fetch Environment Secrets
+        run: |
+          echo "API_KEY=${{ secrets.API_KEY }}" >> env_prod
+
+      - name: Build Release APK
+        run: |
+          flutter clean
+          flutter pub get
+          flutter build apk --flavor prod --release
+
+      - name: Archive Release Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: prod-release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk

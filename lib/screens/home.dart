@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gpt_env_setup/dev/env_dev.dart';
+import 'package:gpt_env_setup/dev/env_setup.dart';
 
 class Home extends StatelessWidget {
   final EnvironmentType appEnvironment;
@@ -10,15 +10,15 @@ class Home extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: true,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
+      theme: ThemeData.light(
+        useMaterial3: true,
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Flutter Demo Home Page'),
+          title: Text(appEnvironment.toString()),
         ),
         body: Center(
-          child: Text('Hello World'),
+          child: Text(DevEnvironment().baseUrl),
         ),
       ),
     );

@@ -29,7 +29,7 @@ jobs:
         run: |
           flutter clean
           flutter pub get
-          flutter build apk --flavor dev --debug
+          flutter build apk --flavor dev --debug --target=lib/dev/main.dart
 
       - name: Archive Debug Artifact
         uses: actions/upload-artifact@v2
@@ -58,7 +58,7 @@ jobs:
         run: |
           flutter clean
           flutter pub get
-          flutter build apk --flavor stage --debug
+          flutter build apk --flavor stage --debug --target=lib/stage/main.dart
 
       - name: Archive Debug Artifact
         uses: actions/upload-artifact@v2
@@ -87,7 +87,7 @@ jobs:
         run: |
           flutter clean
           flutter pub get
-          flutter build apk --flavor prod --release
+          flutter build apk --flavor prod --release --target=lib/prod/main.dart
 
       - name: Archive Release Artifact
         uses: actions/upload-artifact@v2

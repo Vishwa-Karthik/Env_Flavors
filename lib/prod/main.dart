@@ -6,9 +6,9 @@ import 'package:gpt_env_setup/screens/home.dart';
 Future<void> main() async {
   await dotenv.load(
       fileName:
-          ".env_dev"); // Load the environment variables from the .env file
+          "./.env_prod"); // Load the environment variables from the .env file
 
   runApp(const Home(
-    appEnvironment: EnvironmentType.dev,
+    appEnvironment: EnvironmentType.prod,
   )); // Pass the dev environment to your app
 }

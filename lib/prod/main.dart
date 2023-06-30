@@ -7,6 +7,6 @@ import '../dev/env_setup.dart';
 Future<void> main() async {
   await dotenv.load(fileName: "./.env_prod");
   runApp(const Home(
-    appEnvironment: EnvironmentType.dev,
+    appEnvironment: EnvironmentType.prod,
   ));
 }

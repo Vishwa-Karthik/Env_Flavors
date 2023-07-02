@@ -7,7 +7,7 @@
 <script>
   // Retrieve the current URL to determine the app flavor
   var currentUrl = window.location.href;
-
+alert(currentUrl);
   // Select the appropriate app flavor based on the URL
   var appFlavor = 'prod'; // Default to prod flavor
   if (currentUrl.includes('/dev/')) {

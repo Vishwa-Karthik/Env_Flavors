@@ -3,15 +3,16 @@ name: Build and Generate Artifacts
 on:
   push:
     branches:
-      - dev
+      - dev 
       - stage
       - master
+
 
 jobs:
   build-dev-debug:
     name: "Build Debug APK from Dev Branch"
     if: github.event.ref == 'refs/heads/dev'
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
       - name: Checkout Repository

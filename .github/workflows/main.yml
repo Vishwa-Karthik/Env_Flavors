@@ -12,7 +12,7 @@ jobs:
   build-dev-debug:
     name: "Build Debug APK from Dev Branch"
     if: github.event.ref == 'refs/heads/dev'
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository

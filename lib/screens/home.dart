@@ -1,27 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:gpt_env_setup/dev/env_setup.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class Home extends StatelessWidget {
-  final EnvironmentType appEnvironment;
-  const Home({super.key, required this.appEnvironment});
+import '../features/auth_service/auth_service.dart';
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final AuthService _authService = AuthService();
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner:
-          appEnvironment == EnvironmentType.dev ? true : false,
-      title: 'Flutter Demo',
-      theme: ThemeData.light(
-        useMaterial3: true,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Home Page"),
+        actions: [
+          //logout
+          IconButton(
+            onPressed: () {
+              _authService.signOut(context);
+            },
+            icon: const FaIcon(
+              FontAwesomeIcons.powerOff,
+              color: Colors.black,
+            ),
+          ),
+        ],
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(appEnvironment.toString()),
-        ),
-        body: Center(
-          child: Text(DevEnvironment().baseUrl),
-        ),
-      ),
+      body: Center(child: Text("Logged in Successfully")),
     );
   }
 }

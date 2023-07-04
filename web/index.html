@@ -7,7 +7,6 @@
 <script>
   // Retrieve the current URL to determine the app flavor
   var currentUrl = window.location.href;
-alert(currentUrl);
   // Select the appropriate app flavor based on the URL
   var appFlavor = 'prod'; // Default to prod flavor
   if (currentUrl.includes('/dev/')) {
@@ -24,6 +23,26 @@ alert(currentUrl);
   document.head.appendChild(script);
 </script>
 
+
+<!-- <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDx5vyT45BQ7ikQB_b9JeSP6gUCHt9R-3E",
+    authDomain: "environment-setup-dev.firebaseapp.com",
+    projectId: "environment-setup-dev",
+    storageBucket: "environment-setup-dev.appspot.com",
+    messagingSenderId: "583461233846",
+    appId: "1:583461233846:web:616e9000c2856b9fbb3217"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script> -->
 
 
   <base href="$FLUTTER_BASE_HREF">
@@ -67,5 +86,6 @@ alert(currentUrl);
       });
     });
   </script>
+
 </body>
 </html>

@@ -25,13 +25,13 @@ jobs:
 
       - name: Fetch Environment Secrets
         run: |
-          echo "API_KEY=${{ secrets.API_KEY }}" >> .env_dev
+          echo "API_KEY=${{ secrets.API_KEY }}" >> ./lib/environment/dev/.env
 
       - name: Build Debug APK
         run: |
           flutter clean
           flutter pub get
-          flutter build apk --flavor dev --debug --target=lib/dev/main.dart
+          flutter build apk --flavor dev --debug --target=lib/environment/dev/main.dart
 
       - name: Archive Debug Artifact
         uses: actions/upload-artifact@v2
@@ -55,13 +55,13 @@ jobs:
 
       - name: Fetch Environment Secrets
         run: |
-          echo "API_KEY=${{ secrets.API_KEY }}" >> .env_stg
+          echo "API_KEY=${{ secrets.API_KEY }}" >> ./lib/environment/stage/.env
 
       - name: Build Debug APK
         run: |
           flutter clean
           flutter pub get
-          flutter build apk --flavor stage --debug --target=lib/stage/main.dart
+          flutter build apk --flavor stage --debug --target=lib/environment/stage/main.dart
 
       - name: Archive Debug Artifact
         uses: actions/upload-artifact@v2
@@ -85,13 +85,13 @@ jobs:
 
       - name: Fetch Environment Secrets
         run: |
-          echo "API_KEY=${{ secrets.API_KEY }}" >> .env_prod
+          echo "API_KEY=${{ secrets.API_KEY }}" >> ./lib/environment/prod/.env
 
       - name: Build Release APK
         run: |
           flutter clean
           flutter pub get
-          flutter build apk --flavor prod --release --target=lib/prod/main.dart
+          flutter build apk --flavor prod --release --target=lib/environment/prod/main.dart
 
       - name: Archive Release Artifact
         uses: actions/upload-artifact@v2
